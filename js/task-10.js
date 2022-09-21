@@ -18,6 +18,7 @@
 //     .toString(16)
 //     .padStart(6, 0)}`;
 // }
+
 // Создай функцию destroyBoxes(), которая очищает содержимое div#boxes, тем самым удаляя все созданные элементы.
 
 
@@ -34,24 +35,33 @@ console.log(btnDestroy);
 const divBoxes = document.querySelector('#boxes');
 console.log(divBoxes);
 
-btnCreate.addEventListener('click', createBoxes);
+// btnCreate.addEventListener('click', createBoxes);
 
 function createBoxes(amount) {
   amount = input.value;
   // console.log(amount);
-  // const arrBox = [];
+  const arrBox = [];
   for (let i = 0; i < amount; i += 1) {
   const box = document.createElement("div");
   box.classList.add('box');
+
   let boxSize = 30;
-  box.style.display = 'block';
+
   box.style.backgroundColor = `${getRandomHexColor()}`;
-  box.style.width = boxSize + 'px';
-  box.style.height = boxSize + 'px';
-  console.log(box);
-  divBoxes.append('box');
+  box.style.width = (boxSize + i * 10) + 'px';
+  box.style.height = (boxSize + i * 10) + 'px';
+
+  arrBox.push(box);  
 }
+  divBoxes.append(...arrBox);
 }
 
-// divBoxes.append(...arrBox);
-// }
+function destroyBoxes() {
+  const box = document.querySelectorAll('.box');
+  box.forEach(el => el.remove());
+}
+
+btnCreate.addEventListener('click', createBoxes);
+btnDestroy.addEventListener('click', destroyBoxes);
+
+
