@@ -34,12 +34,14 @@ function onSubmit(evt) {
 
   if (email.value.trim() === '' || password.value.trim() === '') {
     alert("Bсе поля должны быть заполнены!");
+    return;
   }
 
   const dataObj = {
     email: email.value,
     password: password.value
   }
+
   console.log(dataObj);
   form.reset();
 }

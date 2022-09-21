@@ -14,7 +14,7 @@
 
 const input = document.querySelector('#validation-input');
 // const length = Number(input.dataset.length);
-const length = Number(input.getAttribute('data-length'));
+const limit = Number(input.getAttribute('data-length'));
 // console.log(input);
 // console.log(length);
 
@@ -22,7 +22,7 @@ input.addEventListener('blur', checkData);
 
 function checkData(evt) {
   console.log(evt.currentTarget.value.trim().length);
-  if (evt.currentTarget.value.trim().length === length) {
+  if (evt.currentTarget.value.trim().length === limit) {
     evt.currentTarget.classList.add('valid');
     evt.currentTarget.classList.remove('invalid');
   } else {
